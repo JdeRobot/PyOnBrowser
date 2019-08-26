@@ -2,7 +2,7 @@
 	"getUS" : [
 		"new __PyFunction__ ('getUS',[], [] , function () {",
 			"let __scope___ = __scope__;",
-			"return (new __PyInt__ (12));",
+			"return (new __PyInt__ (readSensor('Us')));",
 		"});"
 	],
 
@@ -17,7 +17,6 @@
 			"if (linearSpeed.__class__ !== __PyInt__ && linearSpeed.__class__ !== __PyFloat__) {",
 				"throw new __PyTypeError__ ('linear speed argument must be of type int or float');",
 			"}",
-			"myRobot.setV (linearSpeed.x);",
 			"return __PyNone__;",
 		"});"
 	],
@@ -27,14 +26,13 @@
 			"if (angularSpeed.__class__ !== __PyInt__ && angularSpeed.__class__ !== __PyFloat__) {",
 				"throw new __PyTypeError__ ('angular speed argument must be of type int or float');",
 			"}",
-			"myRobot.setW (angularSpeed.x);",
 			"return __PyNone__;",
 		"});"
 	],
 
 	"getEncoders" : [
 		"new __PyFunction__ ('getEncoders',[], [] , function () {",
-				"return new __PyTuple__ ([(new __PyInt__ (1)), (new __PyInt__ (2)), ]);",
+				"return new __PyTuple__ ([(new __PyInt__ (readSensor('getEncoders'))), (new __PyInt__ (readSensor('getEncoders'))), ]);",
 		"});"
 	],
 
@@ -45,20 +43,20 @@
 	],
 	"getV" : [
 		"new __PyFunction__ ('getV',[], [] , function () {",
-			"return new __PyFloat__ (myRobot.getV ());",
+			"return new __PyFloat__ (readSensor('V'));",
 		"});"
 	],
 
 	"getW" : [
 		"new __PyFunction__ ('getW',[], [] , function () {",
-			"return new __PyFloat__ (myRobot.getW ());",
+			"return new __PyFloat__ (readSensor('W'));",
 		"});"
 	],
 
 	"getInfrared" : [
 		"new __PyFunction__ ('getW',[], [] , function () {",
 			"var d = new __PyDict__ ([], []);",
-			"var o = myRobot.getInfrared ();",
+			"var o = {Left: readSensor('Infrared'), Rigth: readSensor('Infrared'), Front: readSensor('Infrared')};",
 			"var left = o.Left, right = o.Right, front = o.Front;",
 			"__setitem__ (d, (new __PyStr__ ('Front')), new __PyList__ ([(new __PyInt__ (front[0])), (new __PyInt__ (front[1])), (new __PyInt__ (front[2])), ]));",
 			"__setitem__ (d, (new __PyStr__ ('Left')), new __PyList__ ([(new __PyInt__ (left[0])), (new __PyInt__ (left[1])), (new __PyInt__ (left[2])), ]));",
