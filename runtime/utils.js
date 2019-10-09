@@ -254,19 +254,20 @@ function __notin__ (v, c) {
 	return __PyTrue__;
 }
 
+let sensorFiles={};
 function readSensor(fname){
+	console.log("reading fake:"+fname)
 	const fs = require('fs');	//make this conditional (only for emulation we need fs
-	file = emulateDir + "/fname";
+	file = emulateDir + "/"+fname;
 	var content;
-	if(! sensorFiles[fname]) {	
-			fs.readFile(file, function read(err, data) {
-				if (err) {
-					print(err);
-					return;
-				}
-				content = data;
-			});
+	if(! sensorFiles[fname]) {
+		console.log(file);
+		content=fs.readFileSync(file).toString();
+		console.log(content)
+	}else{
+		content = sensorFiles[fname].data
+	}
 	rest = content.split("\n", 1);
-	sensorFiles[fname].data = content.slice(rest, rest.length+1);
+	sensorFiles[fname] = {data: content.slice(rest[0].length+1)};
 	return rest;
 }

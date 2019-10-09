@@ -32,7 +32,7 @@
 
 	"getEncoders" : [
 		"new __PyFunction__ ('getEncoders',[], [] , function () {",
-				"return new __PyTuple__ ([(new __PyInt__ (readSensor('getEncoders'))), (new __PyInt__ (readSensor('getEncoders'))), ]);",
+				"return new __PyTuple__ ([(new __PyInt__ (readSensor('Encoders'))), (new __PyInt__ (readSensor('Encoders'))), ]);",
 		"});"
 	],
 
