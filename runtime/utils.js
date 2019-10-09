@@ -253,3 +253,20 @@ function __notin__ (v, c) {
 	}
 	return __PyTrue__;
 }
+
+function readSensor(fname){
+	const fs = require('fs');	//make this conditional (only for emulation we need fs
+	file = emulateDir + "/fname";
+	var content;
+	if(! sensorFiles[fname]) {	
+			fs.readFile(file, function read(err, data) {
+				if (err) {
+					print(err);
+					return;
+				}
+				content = data;
+			});
+	rest = content.split("\n", 1);
+	sensorFiles[fname].data = content.slice(rest, rest.length+1);
+	return rest;
+}

@@ -5,6 +5,8 @@ import os
 import argparse
 import json
 
+emulateDir=""
+
 class FuncVisitor (ast.NodeVisitor):
 	def __init__ (self, node):
 		self.local_vars = []
@@ -590,11 +592,15 @@ class Visitor (ast.NodeVisitor):
 			except Exception as e:
 				file = open (f'{name}.py')
 
-			if (name == 'HAL'): subfile = 'shim.json'
+			if (name == 'HAL'):
+				if(emulateDir):
+					subfile = 'eshim.json'
+				else:
+					subfile = 'shim.json'
 			else: subfile = None
 
 			if (asname != None) : name = asname
-			self.write (f'let {self.scope}{name} = Object.assign (' + '{}' + ', __global__);' + '\n')
+			self.write (f'let {self.scope}{name} = Object.assign (' + '{}' + ', __global__);' + '\n' + 'var emulateDir="'+emulateDir+'";\n')
 			self.write (f'{self.scope}.{name} = new __PyModule__ (\'{name}\', {self.scope}{name});\n')
 			# self.write (f'{self.scope} = ')
 			pt = ast.parse (file.read ())
@@ -692,9 +698,11 @@ class Visitor (ast.NodeVisitor):
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser ()
+	parser.add_argument("--emulatedir", dest='emulateDir', help="activate emulated input from files in dir")
 	parser.add_argument ('inputfile', help = 'name of the input python file')
 	parser.add_argument ('--outfile', help = 'name of the output js file', default = '__gen__.js')
 	args = parser.parse_args ()
+	emulateDir=os.path.abspath(args.emulateDir)
 	try:
 		f = open (args.inputfile, 'r')
 	except Exception as e:
