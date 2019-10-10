@@ -278,7 +278,7 @@ function readSensor(fname){
 
 function writeSensor(fname, val){
 	console.log("writing fake: "+val+"->"+fname)
-	file = emulateDir + "/"+fname;
+	file = emulateDir + "/"+fname+".out";
 	const fs = require('fs');	//make this conditional (only for emulation we need fs
 	try {
 		fs.appendFileSync(file, val+'\n');
