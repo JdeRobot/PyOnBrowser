@@ -44,3 +44,7 @@ print ('IR = ' + str (HAL.getIR ()))
 print (HAL.getLaser ())
 print (HAL.getEncoders ())
 ~~~
+### Execute locally without websim with emulated sensors and actuators
+python3 --emulate /tmp/sensors main.py helloWorld.py --outfile=out.js
+In the directory, there has to be a file per sensor we want to get (US, IR, etc), one number per line.
+After running, a file ending in .out will be appended to with the values which were set to the actuators (V.out, W.out, etc).
