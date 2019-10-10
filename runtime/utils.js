@@ -262,12 +262,29 @@ function readSensor(fname){
 	var content;
 	if(! sensorFiles[fname]) {
 		console.log(file);
-		content=fs.readFileSync(file).toString();
-		console.log(content)
+		try {
+			content=fs.readFileSync(file).toString();
+		}catch(err){
+			console.log("error reading from fake: "+file+" "+err);
+			return 0;
+		}
 	}else{
-		content = sensorFiles[fname].data
+		content = sensorFiles[fname].data;
 	}
 	rest = content.split("\n", 1);
 	sensorFiles[fname] = {data: content.slice(rest[0].length+1)};
 	return rest;
+}
+
+function writeSensor(fname, val){
+	console.log("writing fake: "+val+"->"+fname)
+	file = emulateDir + "/"+fname;
+	const fs = require('fs');	//make this conditional (only for emulation we need fs
+	try {
+		fs.appendFileSync(file, val+'\n');
+	}catch(err){
+		console.log("error writing to fake: "+file+" "+err);
+		return;
+	}
+
 }
