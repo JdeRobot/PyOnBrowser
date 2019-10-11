@@ -256,12 +256,12 @@ function __notin__ (v, c) {
 
 let sensorFiles={};
 function readSensor(fname){
-	console.log("reading fake:"+fname)
+	//console.log("reading fake:"+fname)
 	const fs = require('fs');	//make this conditional (only for emulation we need fs
 	file = emulateDir + "/"+fname;
 	var content;
 	if(! sensorFiles[fname]) {
-		console.log(file);
+		//console.log(file);
 		try {
 			content=fs.readFileSync(file).toString();
 		}catch(err){
@@ -277,7 +277,7 @@ function readSensor(fname){
 }
 
 function writeSensor(fname, val){
-	console.log("writing fake: "+val+"->"+fname)
+	//console.log("writing fake: "+val+"->"+fname)
 	file = emulateDir + "/"+fname+".out";
 	const fs = require('fs');	//make this conditional (only for emulation we need fs
 	try {
