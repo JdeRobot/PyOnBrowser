@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import sys
+sys.tracebacklimit=0
 
 import os
 import argparse

@@ -1,11 +1,15 @@
 // <builtin print>
 var print = new __PyFunction__ (new __PyStr__ ('print'), [], [], function (x) {
-	console.log (x.__str__().toString ());
+	console.log(x.__str__().toString())
 	return __PyNone__;
 });
 print.__call__ = function () {
 	for (let x of arguments) {
-		console.log (x.__str__ ().toString ());
+	var s = x.__str__().toString()
+	if (x.__class__ === __PyStr__){
+		s=s.slice(1, s.length-1)
+	}
+	console.log(s)
 	}
 }
 var range = new __PyFunction__ (new __PyStr__ ('range'), function (start, end, step) {
