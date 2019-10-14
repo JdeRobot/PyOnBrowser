@@ -1,10 +1,13 @@
+import os
 
+
+emulateDir=os.environ['PYONBROWSER_EMULATEDIR']
 sensorFiles=dict([])
 class FileData(object):
 	data=[]
 
 def readSensor(fname):
-	print("reading fake: "+ fname)
+	#print("reading fake: "+ fname)
 	fpath=emulateDir+"/"+fname
 	content = []
 	isPres=True
@@ -28,7 +31,7 @@ def readSensor(fname):
 	return float(rest)
 
 def writeSensor(fname, val):
-	print("writing fake: "+str(val)+"->"+fname)
+	#print("writing fake: "+str(val)+"->"+fname)
 	fpath = emulateDir + "/"+fname+".out"
 	f=open(fpath, "a+")
 	try:
@@ -46,10 +49,10 @@ def getIR ():
 	return readSensor('IR')
 
 def setV (linearSpeed):
-	writeSensor('V', linearSpeed.x)
+	writeSensor('V', linearSpeed)
 
 def setW (angularSpeed):
-	writeSensor('W', angularSpeed.x)
+	writeSensor('W', angularSpeed)
 
 def getLaser ():
 	print('unimplemented')
