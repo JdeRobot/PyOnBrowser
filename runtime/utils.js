@@ -221,7 +221,7 @@ function __getfuncscope__ (parscope, __globalvars__, __localvars__) {
 				if (key in target) {
 					return target[key];
 				}
-				__callstack__ = new Error ().stack; throw new __PyUnboundLocalError__ (`name '${key}' referenced before assginment`);
+				__callstack__ = new Error ().stack; throw new __PyUnboundLocalError__ (`local variable '${key}' referenced before assignment`);
 			} else if (! (key in target)) {
 				return target['__parscope__'][key];
 			}

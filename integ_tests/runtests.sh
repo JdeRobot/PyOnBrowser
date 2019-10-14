@@ -28,7 +28,7 @@ dotest(){
 			return
 		fi
 	done
-	echo $nametest pass
+	echo '	'$nametest pass
 }
 
 case $# in
@@ -54,6 +54,7 @@ for t in *_test; do
 	if ! dotest $dirtest $t; then
 		export PASS=fail
 	fi
+	cd $workdir/integ_tests
 done
 echo ALL tests $PASS;
 if [ $PASS != pass ]; then

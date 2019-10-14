@@ -24,14 +24,19 @@ dotest(){
 	js $jsexe > $namepy.out 2>&1
 	for i in $dirtest/*.out; do
 		if cmp -s $i $i.native; then
-			rm $i $i.native
+			rm $i.native
+			mv $i $i.ok
 		else
 			echo for `basename $namepy` $i is not $i.native
+				echo '	- you may want to run
+				diff ' $i $i.native
 			false
 			return
 		fi
 	done
-	echo $nametest pass
+	echo '	'$nametest pass
+	echo '	- you may want to run
+				cp '$dirtest'/*.out.ok' $workdir/integ_tests/$nametest/
 }
 
 
@@ -50,6 +55,7 @@ esac
 cd $workdir/integ_tests
 
 for t in *_test; do
+	cd $workdir/integ_tests
 	if ! test -d $t; then
 		continue
 	fi

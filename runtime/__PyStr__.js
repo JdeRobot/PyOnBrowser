@@ -14,7 +14,7 @@ __PyStr__.__call__ = function (x) {
 	}
 }
 __PyStr__.__str__ = function () {return (new __PyStr__ (`<class 'str'>`));}
-__PyStr__.prototype.__str__ = function () {return this;}
+__PyStr__.prototype.__str__ = function () {return '\''+this+'\'';}
 __PyStr__.prototype.toString = function () {return this.x;}
 __PyStr__.prototype.__add__ = function (other) {
 	if (other instanceof __PyStr__) {
