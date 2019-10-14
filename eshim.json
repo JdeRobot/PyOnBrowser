@@ -2,13 +2,13 @@
 	"getUS" : [
 		"new __PyFunction__ ('getUS',[], [] , function () {",
 			"let __scope___ = __scope__;",
-			"return (new __PyInt__ (readSensor('Us')));",
+			"return (new __PyInt__ (readSensor('US')));",
 		"});"
 	],
 
 	"getIR" : [
 		"new __PyFunction__ ('getIR',[], [] , function () {",
-				"return __PyTrue__;",
+			"return (new __PyInt__ (readSensor('IR')));",
 		"});"
 	],
 
@@ -58,7 +58,7 @@
 	"getInfrared" : [
 		"new __PyFunction__ ('getW',[], [] , function () {",
 			"var d = new __PyDict__ ([], []);",
-			"var o = {Left: readSensor('Infrared'), Rigth: readSensor('Infrared'), Front: readSensor('Infrared')};",
+			"var o = {Left: readSensor('Infrared'), Right: readSensor('Infrared'), Front: readSensor('Infrared')};",
 			"var left = o.Left, right = o.Right, front = o.Front;",
 			"__setitem__ (d, (new __PyStr__ ('Front')), new __PyList__ ([(new __PyInt__ (front[0])), (new __PyInt__ (front[1])), (new __PyInt__ (front[2])), ]));",
 			"__setitem__ (d, (new __PyStr__ ('Left')), new __PyList__ ([(new __PyInt__ (left[0])), (new __PyInt__ (left[1])), (new __PyInt__ (left[2])), ]));",
