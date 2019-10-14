@@ -59,7 +59,7 @@ of files for input of sensors, the names obtained from the sensors and for the
 correct output of the sensors ending in .ok (see
 /pathinstall/PyOnBrowser/integ_tests/simpl_test/ for an example).
 
-To run A/B testing (translated against native Python)
+To run A/B testing (tested against native Python)
 
 ~~~sh
 /pathinstall/PyOnBrowser/ab_test/runabtest.sh
