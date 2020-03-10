@@ -698,7 +698,7 @@ class Visitor (ast.NodeVisitor):
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser ()
-	parser.add_argument("--emulatedir", dest='emulateDir', help="activate emulated input from files in dir")
+	parser.add_argument("--emulatedir", dest='emulateDir', help="activate emulated input from files in dir", default='eshim.json')
 	parser.add_argument ('inputfile', help = 'name of the input python file')
 	parser.add_argument ('--outfile', help = 'name of the output js file', default = '__gen__.js')
 	args = parser.parse_args ()
